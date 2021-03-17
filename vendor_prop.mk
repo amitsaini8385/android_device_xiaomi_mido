@@ -4,6 +4,7 @@
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
 af.fast_track_multiplier=2 \
+audio.deep_buffer.media=true \
 audio.offload.disable=true \
 audio.offload.min.duration.secs=30 \
 audio.offload.video=true \
@@ -22,7 +23,7 @@ vendor.audio.offload.gapless.enabled=true \
 vendor.audio.offload.multiaac.enable=true \
 vendor.audio.offload.multiple.enabled=false \
 vendor.audio.offload.track.enable=true \
-vendor.audio.parser.ip.buffer.size=0 \
+vendor.audio.parser.ip.buffer.size=262144 \
 vendor.audio.playback.mch.downsample=true \
 vendor.audio.safx.pbe.enabled=true \
 vendor.audio.tunnel.encode=false \
@@ -39,6 +40,7 @@ vendor.voice.voip.conc.disabled=true
 PRODUCT_PROPERTY_OVERRIDES += \
 vendor.audio.feature.hifi_audio.enable=true \
 vendor.audio.feature.compr_voip.enable=true \
+vendor.audio.feature.compress_meta_data.enable=true \
 vendor.audio.feature.src_trkn.enable=true \
 vendor.audio.feature.wsa.enable=true \
 vendor.audio.feature.fluence.enable=true \
@@ -77,10 +79,6 @@ persist.vendor.cne.feature=1
 PRODUCT_PROPERTY_OVERRIDES += \
 persist.debug.coresight.config=stm-events
 
-# Dalvik dex2oat
-PRODUCT_PROPERTY_OVERRIDES += \
-dalvik.vm.dex2oat64.enabled=true
-
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
 debug.egl.hw=0 \
@@ -107,7 +105,10 @@ vendor.gralloc.enable_fb_ubwc=1
 
 # DPM
 PRODUCT_PROPERTY_OVERRIDES += \
-persist.vendor.dpm.feature=0
+persist.vendor.dpm.feature=1 \
+persist.vendor.dpmhalservice.enable=1 \
+persist.vendor.dpm.loglevel=0 \
+persist.vendor.mwqem.enable=1
 
 # DRM
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -155,6 +156,10 @@ ro.vendor.use_data_netmgrd=true \
 persist.data.netmgrd.qos.enable=true \
 persist.vendor.data.mode=concurrent
 
+# Network manager
+PRODUCT_PROPERTY_OVERRIDES += \
+persist.vendor.data.iwlan.enable=true
+
 # Nitz
 PRODUCT_PROPERTY_OVERRIDES += \
 persist.vendor.radio.nitz_plmn="" \
@@ -179,9 +184,11 @@ persist.dbg.volte_avail_ovr=1 \
 persist.dbg.vt_avail_ovr=1 \
 persist.dbg.wfc_avail_ovr=1 \
 persist.radio.multisim.config=dsds \
+persist.vendor.radio.add_power_save=1 \
 persist.vendor.radio.apm_sim_not_pwdn=1 \
 persist.vendor.radio.custom_ecc=1 \
 persist.vendor.radio.hw_mbn_update=0 \
+persist.vendor.radio.procedure_bytes=SKIP \
 persist.vendor.radio.rat_on=combine \
 persist.vendor.radio.sib16_support=1 \
 ril.subscription.types=NV,RUIM \
@@ -212,7 +219,8 @@ ro.surface_flinger.max_virtual_display_dimension=4096
 
 # Time Services
 PRODUCT_PROPERTY_OVERRIDES += \
-persist.vendor.delta_time.enable=true
+persist.backup.ntpServer=0.pool.ntp.org \
+persist.timed.enable=true
 
 # Tcp
 PRODUCT_PROPERTY_OVERRIDES += \
