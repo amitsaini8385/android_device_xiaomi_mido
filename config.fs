@@ -22,6 +22,9 @@ value:2907
 [AID_VENDOR_FASTRPC]
 value:2908
 
+[AID_VENDOR_QTR]
+value:2909
+
 [vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti]
 mode: 0755
 user: AID_BLUETOOTH
@@ -64,11 +67,23 @@ user:  AID_GPS
 group: AID_GPS
 caps: SETUID SETGID
 
+[vendor/bin/pd-mapper]
+mode: 0755
+user: AID_SYSTEM
+group: AID_SYSTEM
+caps: NET_BIND_SERVICE
+
 [vendor/bin/sensors.qti]
 mode: 0755
 user: AID_SYSTEM
 group: AID_SYSTEM
 caps: NET_BIND_SERVICE
+
+[vendor/bin/xtwifi-client]
+mode: 0755
+user:  AID_GPS
+group: AID_GPS
+caps: NET_BIND_SERVICE BLOCK_SUSPEND WAKE_ALARM
 
 [firmware/]	
 mode: 0771	
